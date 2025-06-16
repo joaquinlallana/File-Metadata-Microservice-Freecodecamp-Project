@@ -1,67 +1,81 @@
 # File Metadata Microservice
 
-Este es un proyecto de microservicio para analizar metadatos de archivos, desarrollado como parte de los proyectos de APIs y Microservicios de freeCodeCamp.
+A simple microservice that analyzes uploaded files and returns their metadata (name, type, and size in bytes). Built as part of the [FreeCodeCamp Back End Development and APIs Certification](https://www.freecodecamp.org/learn/back-end-development-and-apis/).
 
-## Descripción
+## 🚀 Features
+- Accepts file uploads via a web form or API endpoint.
+- Returns JSON response with:
+  - `name`: Original filename.
+  - `type`: MIME type (e.g., `image/png`).
+  - `size`: File size in bytes.
 
-La aplicación permite a los usuarios subir un archivo y recibir como respuesta un objeto JSON con el nombre, tipo y tamaño (en bytes) del archivo subido.
+## ⚙️ How It Works
+1. **Frontend**: User uploads a file through the HTML form.
+2. **Backend**: The server processes the file using `multer` middleware.
+3. **Response**: Returns metadata as JSON (e.g., `{"name":"example.txt","type":"text/plain","size":123}`).
 
-## Uso
+## 📦 Installation
+1. Clone the repo:
+   ```bash
+   git clone https://github.com/joaquinlallana/File-Metadata-Microservice-Freecodecamp-Project.git
+   ```
+2. Install dependencies:
 
-1. Abre la aplicación en tu navegador.
-2. Selecciona un archivo usando el formulario.
-3. Haz clic en "Upload".
-4. Recibirás una respuesta JSON con los metadatos del archivo:
+```bash
 
-```json
-{
-  "name": "nombre_del_archivo.ext",
-  "type": "tipo/mime",
-  "size": 12345
-}
+npm install
+```
+3. Start the server:
+
+```bash
+
+    npm start
+
+    Open http://localhost:3000 in your browser.
 ```
 
-## Instalación
+# 🌐 API Reference
 
-1. Clona este repositorio:
-   ```bash
-   git clone <url-del-repositorio>
-   cd boilerplate-project-filemetadata
+## Upload a file
+
+    Endpoint: POST /api/fileanalyse
+
+    Request:
+
+        Form field name: upfile (must be a file upload).
+
+    Response:
+    ```json
+
+    {
+      "name": "filename.ext",
+      "type": "file/mimetype",
+      "size": 1234
+    }
+    ```
+
+# 🧪 Testing
+
+Run the included functional tests (FreeCodeCamp requirements) with:
+```bash
+
+npm test
    ```
-2. Instala las dependencias:
-   ```bash
-   npm install
-   ```
-3. Inicia el servidor:
-   ```bash
-   npm start
-   ```
-4. Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
+# 📝 Notes
 
-## Endpoints
+    Max file size: Limited by multer (adjust in server.js if needed).
 
-- `POST /api/fileanalyse`  
-  Envía un archivo en el campo `upfile` del formulario.  
-  Responde con un JSON que contiene el nombre, tipo y tamaño del archivo.
+    Supported files: Any MIME type (e.g., images, text, PDFs).
 
-## Tecnologías utilizadas
+# 🔧 Dependencies
 
-- Node.js
-- Express
-- Multer
-- freeCodeCamp boilerplate
+    Express.js
 
-## Estructura del proyecto
+    Multer (for file handling)
 
-```
-/routes/api.js        # Lógica de la API y manejo de archivos
-/views/index.html     # Página principal con el formulario
-/public/              # Archivos estáticos (CSS, imágenes, etc.)
-index.js              # Archivo principal del servidor
-```
+    Mocha/Chai (for testing)
 
-## Créditos
+# 🙌 Credits
 
-Proyecto basado en el boilerplate de freeCodeCamp.
-
----
+Project idea by FreeCodeCamp.
+Developed by Joaquín Lallana.
